@@ -3,4 +3,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  # config/routes.rb
+
+  namespace :api, defaults: { format: :json } do
+    resources :requests do
+      member do
+        get 'matching_partners'
+      end
+    end
+  end
+
 end
