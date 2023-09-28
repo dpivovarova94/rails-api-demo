@@ -1,0 +1,24 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/requests/{id}/matching_partners":
+    parameters:
+    - name: id
+      in: path
+      description: Request ID
+      required: true
+      schema:
+        type: string
+    get:
+      summary: matching_partners
+      responses:
+        '200':
+          description: Successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
