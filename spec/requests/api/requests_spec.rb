@@ -12,7 +12,8 @@ RSpec.describe 'api/requests', type: :request do
       response(200, 'Successful') do
         # Provide an example request ID (should match an existing request).
         let(:id) { '123' }
-
+        # before do
+        # creating the request.create with id
         # After running the test, format the response content for documentation.
         after do |example|
           example.metadata[:response][:content] = {
