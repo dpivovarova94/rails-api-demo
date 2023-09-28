@@ -69,4 +69,3 @@ group :test do
 end
 
 gem 'faker'
-gem 'geokit-rails'
