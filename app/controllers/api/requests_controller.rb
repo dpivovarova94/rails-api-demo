@@ -3,6 +3,7 @@ class Api::RequestsController < ApplicationController
   require_relative '/Users/user/code/dpivovarova94/rails-api-demo/app/services/request_matcher.rb'
 
   def matching_partners
+    begin
     # Your matching logic here
      # Find the request by id
     #  customer = Customer.find(params[:id])
@@ -17,6 +18,10 @@ class Api::RequestsController < ApplicationController
 
      # Serialize the prioritized partners to JSON
      render json: prioritized_partners
-  end
 
+    rescue ActiveRecord::RecordNotFound
+      # Handle the case where the request_id doesn't exist
+      render json: { error: 'Request not found' }, status: :not_found
+    end
+  end
 end

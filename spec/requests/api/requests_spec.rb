@@ -32,6 +32,11 @@ describe 'Matching Partners API' do
         # Run the test.
         run_test!
       end
+
+      response '404', 'request not found' do
+        let(:id) { 'invalid' }
+        run_test!
+      end
     end
   end
 
