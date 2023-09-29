@@ -71,6 +71,8 @@ group :test do
 end
 
 gem 'faker'
-gem 'rswag'
+# gem 'rswag'
 gem 'rswag-ui'
 gem 'rswag-api'
+
+gem 'rack-cors'

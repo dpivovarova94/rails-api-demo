@@ -1,28 +1,34 @@
 require 'swagger_helper'
 
-RSpec.describe 'api/requests', type: :request do
-
+# RSpec.describe 'api/requests', type: :request do
+describe 'Matching Partners API' do
   path '/api/requests/{id}/matching_partners' do
     # Define a parameter for the request's ID in the path.
     parameter name: 'id', in: :path, type: :string, description: 'Request ID'
 
-    # Start describing the HTTP GET request for matching partners.
     get('matching_partners') do
+      produces 'application/json'
+      description 'Get matching partners for a request'
+
+      # Start describing the HTTP GET request for matching partners.
       # Describe the expected response for a successful request.
-      response(200, 'Successful') do
+      response 200, 'Successful' do
+        # schema type: :object,
+        #   properties: {
+        #     id: { type: :integer },
+        #     is_wood: { type: :boolean },
+        #     is_carpet: { type: :boolean },
+        #     is_tiles: { type: :boolean },
+        #     lat: { type: :string },
+        #     lon: { type: :string },
+        #     operating_radius: { type: :integer },
+        #     rating: { type: :decimal },
+        #     created_at: { type: :datetime },
+        #     updated_at: { type: :datetime }
+        #   },
+        #   required: [ 'id', 'lat', 'lon', 'operating_radius', 'rating' ]
         # Provide an example request ID (should match an existing request).
         let(:id) { '123' }
-        # before do
-        # creating the request.create with id
-        # After running the test, format the response content for documentation.
-        after do |example|
-          example.metadata[:response][:content] = {
-            'application/json' => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
-
         # Run the test.
         run_test!
       end
